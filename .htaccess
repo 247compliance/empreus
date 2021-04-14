@@ -1,10 +1,12 @@
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-</IfModule>
 
-# END WordPress
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule index.html.var index.php
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+RewriteRule \.(css|js|png|jpg|gif|woff|woff2|ttf|jpeg|xml|pdf)$ - [L]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+RewriteRule ^/.*$ index.php [QSA,L]
+RewriteRule ^(.*)$ index.php [QSA,L]
+# RewriteRule ^sitemap\.xml$ sitemap.php [L]
